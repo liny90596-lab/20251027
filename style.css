@@ -1,0 +1,127 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* 移除捲軸 */
+}
+
+canvas {
+  display: block;
+  /* 確保 canvas 不會因預設樣式產生空隙 */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 側邊選單樣式 */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: -280px; /* 預設隱藏於畫面左側 */
+  width: 280px;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  z-index: 1100; /* 置於 canvas 之上 */
+  box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+  transition: left 0.28s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sideMenu.visible {
+  left: 0; /* 滑入顯示 */
+}
+
+#sideMenu ul {
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+  width: 100%;
+}
+
+#sideMenu li {
+  margin: 12px 0;
+}
+
+#sideMenu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 8px 12px;
+  font-size: 32px; /* 使用者要求的字體大小 */
+  font-weight: 500;
+}
+
+#sideMenu a:hover {
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+}
+
+/* 避免選單被畫布遮蔽的互動範圍（可視情況移除） */
+.menu-trigger-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none; /* 不阻擋滑鼠事件，僅作參考 */
+}
+
+/* iframe overlay */
+#iframeModal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 1200; /* 高於側選單 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+#iframeModal.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.iframe-wrap {
+  position: relative;
+  width: 70vw; /* 70% 視窗寬 */
+  height: 85vh; /* 85% 視窗高 */
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+#iframeClose {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#iframeClose:hover {
+  background: rgba(0,0,0,0.85);
+}

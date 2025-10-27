@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 隱藏式側邊選單（預設隱藏，靠 CSS 控制滑入/滑出） -->
+    <nav id="sideMenu" aria-hidden="true">
+      <ul>
+        <li><a id="link-work" href="javascript:void(0)">第一單元作品</a></li>
+        <li><a id="link-s1" href="javascript:void(0)">第一單元講義</a></li>
+        <li><a href="#">測驗系統</a></li>
+        <li><a href="#">回到首頁</a></li>
+      </ul>
+    </nav>
+
+    <!-- iframe overlay，用來顯示教案（預設隱藏） -->
+    <div id="iframeModal" aria-hidden="true">
+      <div class="iframe-wrap">
+        <button id="iframeClose" aria-label="關閉">&times;</button>
+        <iframe id="contentFrame" src="" frameborder="0" title="第一單元講義"></iframe>
+      </div>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+</html>
